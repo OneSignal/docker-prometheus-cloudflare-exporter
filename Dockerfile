@@ -1,4 +1,4 @@
-FROM python:3-slim AS build-env
+FROM python:2.7-slim AS build-env
 
 WORKDIR /exporter
 
@@ -9,7 +9,7 @@ RUN pip install --target="/exporter/pip" --requirement="/exporter/requirements.t
 
 ADD ./exporter /exporter
 
-FROM gcr.io/distroless/python3
+FROM gcr.io/distroless/python2.7
 ENTRYPOINT ["python", "-m", "exporter"]
 EXPOSE 9199
 ENV FLASK_APP=/app/exporter/app.py \
