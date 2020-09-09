@@ -94,6 +94,18 @@ Overview of requests served per Cloudflare network point-of-presence:
 Overview of actual countries that cause threats:
 ![Attacking Countries](./docs/assets/threats.png)
 
+### Deploy a new image
+
+To publish a new version you need to create a new git tag to mark a new release. Tagging the commit triggers a CircleCI
+pipeline to build and publish a new Docker image.
+
+```
+git tag 1.2.0
+git push --tags
+```
+
+The Docker images are hosted at [Docker Hub](https://hub.docker.com/repository/docker/osig/prometheus-cloudflare-exporter)
+
 ### Todo
 
 - [ ] Implement a way to store datapoints in Prometheus using timestamps received from Cloudflare. This should remove the delay as we currently have it.
